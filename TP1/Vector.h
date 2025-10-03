@@ -50,25 +50,24 @@ Vector crearVector(unsigned int n = 10)
 
 bool redimensionar(Vector &V, unsigned int n)
 {
-    Vector nuevo = crearVector(n);
+    item* nuevo = V.elementos;
+    unsigned maxAux = V.max;
+    
+    V = crearVector(n);
 
-    for (size_t i = 0; i < V.max; i++)
-    {
-        nuevo.elementos[i] = V.elementos[i];
-    }
+    if(V.max == 0){
+        V.elementos = nuevo;
+        V.max = maxAux;
 
-    delete[] V.elementos;
-
-    V.elementos = nuevo.elementos;
-    V.max = n;
-
-    if (V.max == n)
-    {
-        return true;
-    }
-    else
-    {
         return false;
+    }else{
+        for(size_t i=0; i<maxAux;i++){
+            V.elementos[i] = nuevo[i];
+        }
+
+        delete[] nuevo;
+
+        return true;
     }
 }
 
@@ -109,6 +108,11 @@ item& elemento(Vector V, unsigned int x){
         return V.elementos[x-1];
     }
 }
+
+// sjdfkajsdfsdf
+// jasdflijlsadfjasdf
+// lasdjfasdj
+
 
 Vector borrar(Vector V, unsigned int p){
     if(p > V.max){

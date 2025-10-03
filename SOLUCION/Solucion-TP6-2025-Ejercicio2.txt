@@ -1,0 +1,128 @@
+// ============================================================================
+// PARADIGMAS DE PROGRAMACION - 2025
+// Solucion-TP6-2025-Ejercicio2.txt
+// ============================================================================
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------
+//  Ejercicio 2)b.
+// -----------------------------------------------------------------------------------------------------------------------------------------------
+
+//SALIDA DEL PROGRAMA DE PRUEBA DE LA CLASE CUENTAOBJETO
+
+INICIO DEL PROGRAMA DE PRUEBA
+
+
+  ----------------------
+   1er Resumen
+      - Creados: 0
+      - Destruidos: 0
+  ----------------------
+
+Invocacion al constructor por defecto
+Const x defecto: 0x66ff00             /* PruebaCuentaObjeto.cpp - Linea 18 */
+(Fin constructor por defecto)
+
+  ----------------------
+   2do Resumen
+      - Creados: 1
+      - Destruidos: 0
+  ----------------------
+
+
+##########	INICIO BLOQUE DE CODIGO  ##########
+
+Invocacion al constructor por defecto
+Const x defecto: 0x447040             /* PruebaCuentaObjeto.cpp - Linea 29 */
+(Fin constructor por defecto)
+
+  ----------------------
+   3er Resumen
+      - Creados: 2
+      - Destruidos: 0
+  ----------------------
+
+Invocacion al constructor copia
+Const copia: 0x66fef0             /* PruebaCuentaObjeto.cpp - Linea 38 */
+(Fin constructor copia)
+
+  ----------------------
+   4to Resumen
+      - Creados: 3
+      - Destruidos: 0
+  ----------------------
+
+Invocacion al constructor por defecto a traves del operador NEW
+Const x defecto: 0xc82ce8             /* PruebaCuentaObjeto.cpp - Linea 47 */
+(Fin constructor por defecto)
+
+  ----------------------
+   5to Resumen
+      - Creados: 4
+      - Destruidos: 0
+  ----------------------
+
+Invocacion a la funcion miembro metodo1
+(Inicio metodo1)
+   Objeto receptor del mensaje: 0x447040
+   Objeto argumento del mensaje: 0x66ff00
+(Fin metodo1)
+
+  ----------------------
+   6to Resumen
+      - Creados: 4
+      - Destruidos: 0
+  ----------------------
+
+Invocacion a la funcion miembro metodo2
+Const copia: 0x66fec0             /* CuentaObjeto.cpp - Linea 29 --> OBS: Al invocar la funcion metodo2, esta realiza una copia local del objeto recibido como parametro de la funcion */
+(Inicio metodo2)
+   Objeto receptor del mensaje: 0xc82ce8
+   Objeto argumento del mensaje: 0x66fec0
+(Fin metodo2)
+Const copia: 0x66fed0             /* CuentaObjeto.cpp - Linea 34 --> OBS: Se invoca al Constructor Copia para obtener una copia de la variable local para poder retornar la misma */
+Destructor: 0x66fed0             /* CuentaObjeto.cpp - Linea 35 --> OBS: Se invoca al Destructor implicitamente porque la variable local queda fuera del ambito de la funcion */
+Destructor: 0x66fec0             /* CuentaObjeto.cpp - Linea 35 --> OBS: Se invoca al Destructor implicitamente porque la variable local queda fuera del ambito de la funcion */
+
+  ----------------------
+   7mo Resumen
+      - Creados: 6
+      - Destruidos: 2
+  ----------------------
+
+
+##########  FIN BLOQUE DE CODIGO  ##########
+
+Destructor: 0x66fef0             /* PruebaCuentaObjeto.cpp - Linea 72 --> OBS: Se invoca al Destructor implicitamente porque la variable local queda fuera del ambito del bloque */
+
+  ----------------------
+   8vo Resumen
+      - Creados: 6
+      - Destruidos: 3
+  ----------------------
+
+
+FIN DEL PROGRAMA DE PRUEBA
+
+Destructor: 0x66ff00             /* PruebaCuentaObjeto.cpp - Linea 81 --> OBS: Se invoca al Destructor implicitamente porque la variable local queda fuera del ambito de la funcion main */
+Destructor: 0x447040             /* PruebaCuentaObjeto.cpp - Linea 81 --> OBS: Se invoca al Destructor implicitamente porque la variable local queda fuera del ambito de la funcion main */
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------------------
+//  Ejercicio 2)c.
+// -----------------------------------------------------------------------------------------------------------------------------------------------
+
+/*
+
+ En la ejecucion del programa de prueba se crean 6 objetos en total y se destruyen 5 al finalizar el mismo.
+ 
+ El unico objeto que no fue destruido es el objeto que se accede a través del puntero obj4 y cuya direccion de memoria es 0xc82ce8. 
+
+ Esto se debe a que el objeto 0xc82ce8 fue creado dinamicamente con el operador new (Linea de codigo 47).
+ 
+ Para liberar la memoria asignada dinamicamente a ese objeto se debe invocar explícitamente al destructor de la clase 
+ mediante la siguiente instrucciom: 
+                                     delete obj4;  
+ Esta instruccion se debe realizar antes de que la variable puntero obj4 quede fuera de alcance, es decir, antes de que finalice el 
+ bloque de codigo donde fue declarada la misma.
+ 
+ */
